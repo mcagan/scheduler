@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import InterviewerListItem from "./InterviewerListItem";
 import "./InterviewerList.scss";
@@ -10,7 +10,7 @@ export default function DayList(props) {
         key={interviewer.id}
         name={interviewer.name}
         selected={interviewer.id === props.interviewer}
-        setInterviewer={props.setInterviewer}
+        setInterviewer={(event) => props.setInterviewer(interviewer.id)}
         avatar={interviewer.avatar}
       />
     );
