@@ -59,6 +59,7 @@ export default function Application(props) {
       .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(setState({ ...state, appointments }));
   }
+
   const appointmentArray = getAppointmentsForDay(state, state.day);
   const interviewersArray = getInterviewersForDay(state, state.day);
 
