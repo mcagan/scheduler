@@ -34,3 +34,7 @@ export function getInterviewersForDay(state, day) {
   return filteredDate.interviewers.map((id) => state.interviewers[id]);
   // return [];
 }
+
+export function getDayFromAppointmentId(state, id) {
+  return state.days.find((day) => day.appointments.includes(id));
+}
