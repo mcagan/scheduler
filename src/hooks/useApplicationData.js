@@ -22,42 +22,70 @@ export default function useApplicationDate() {
     );
   }, []);
 
+  const updateSpots = function (id, type) {
+    const index = state.days.findIndex((x) => x.appointments.includes(id));
+    let spots = state.days[index].spots;
+    if (type === "add") {
+      spots -= 1;
+    } else if (type === "delete") {
+      spots += 1;
+    }
+    const days = state.days;
+    days[index].spots = spots;
+    return setState({
+      ...state,
+      days,
+    });
+  };
   const bookInterview = function (id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview },
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
+    console.log(interview);
 
     return axios
-      .put(`http://localhost:8001/api/appointments/${id}`, appointment)
-      .then(
+      .put(`http://localhost:8001/api/appointments/${id}`, { interview })
+      .then(() => {
+        const appointment = {
+          ...state.appointments[id],
+          interview,
+        };
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment,
+        };
         setState({
           ...state,
           appointments,
-        })
-      );
+        });
+      })
+      .then(updateSpots(id, "add"));
   };
+
   const cancelInterview = function (id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
     return axios
       .delete(`http://localhost:8001/api/appointments/${id}`)
-      .then(setState({ ...state, appointments }));
+      .then(() => {
+        const appointment = {
+          ...state.appointments[id],
+          interview: null,
+        };
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment,
+        };
+        setState({ ...state, appointments });
+      })
+      .then(updateSpots(id, "delete"));
   };
 
   const setDay = function (day) {
     setState({ ...state, day });
   };
 
-  return { state, setState, bookInterview, cancelInterview, setDay };
+  return {
+    state,
+    setState,
+    bookInterview,
+    cancelInterview,
+    setDay,
+    // decreaseSpots,
+  };
 }
