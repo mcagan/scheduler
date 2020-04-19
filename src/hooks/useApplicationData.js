@@ -15,6 +15,7 @@ export default function useApplicationDate() {
     const interviewers = axios.get("http://localhost:8001/api/interviewers");
     Promise.all([days, appointments, interviewers]).then((all) =>
       setState((prev) => ({
+        ...prev,
         days: all[0].data,
         appointments: all[1].data,
         interviewers: all[2].data,
