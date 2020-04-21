@@ -6,7 +6,6 @@ export function useVisualMode(initial) {
 
   function transition(newMode, replace = false) {
     if (replace === true) {
-      history.pop();
       setHistory((prevHistory) => {
         prevHistory.pop();
         return [...prevHistory, newMode];
@@ -15,16 +14,14 @@ export function useVisualMode(initial) {
       setHistory((prevHistory) => [...prevHistory, newMode]);
     }
     setMode(newMode);
-    console.log(history, newMode, replace);
+    console.log("in transition", history);
   }
 
   function back() {
+    console.log("in back", history);
     if (history.length > 1) {
-      console.log("before you remove", history);
       history.pop();
       setMode(history[history.length - 1]);
-    } else {
-      return;
     }
   }
   return { mode, transition, back };

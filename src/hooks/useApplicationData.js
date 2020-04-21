@@ -10,9 +10,9 @@ export default function useApplicationDate() {
     interviewers: {},
   });
   useEffect(() => {
-    const days = axios.get("http://localhost:8001/api/days");
-    const appointments = axios.get("http://localhost:8001/api/appointments");
-    const interviewers = axios.get("http://localhost:8001/api/interviewers");
+    const days = axios.get("/api/days");
+    const appointments = axios.get("/api/appointments");
+    const interviewers = axios.get("/api/interviewers");
     Promise.all([days, appointments, interviewers]).then((all) =>
       setState((prev) => ({
         ...prev,
@@ -39,8 +39,6 @@ export default function useApplicationDate() {
     });
   };
   const bookInterview = function (id, interview) {
-    console.log(interview);
-
     return axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {

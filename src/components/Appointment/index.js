@@ -39,7 +39,7 @@ export default function Appointment(props) {
   }
 
   function deleteInterview(id) {
-    transition(DELETING);
+    transition(DELETING, true);
     props
       .cancelInterview(props.id)
       .then(() => {
@@ -47,9 +47,8 @@ export default function Appointment(props) {
       })
       .catch((error) => transition(ERROR_DELETE, true));
   }
-  console.log(props);
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === SHOW && props.interview && (
         <Show
