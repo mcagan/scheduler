@@ -1,23 +1,32 @@
 # Interview Scheduler
 
+A responsive app built with React that lets users schedule interviews.
+
 ## Setup
 
 Install dependencies with `npm install`.
 
-## Running Webpack Development Server
+## Command for Running Webpack Development Server
 
-```sh
 npm start
-```
 
-## Running Jest Test Framework
+## Command for Running Jest Test Framework
 
-```sh
 npm test
-```
 
-## Running Storybook Visual Testbed
+## Running for Storybook Visual Testbed
 
-```sh
 npm run storybook
-```
+
+## Dependencies
+
+- Node.JS
+- Axios
+- @testing-library/react-hooks
+- react-test-renderer
+
+## Screenshots of App
+
+!["Main page on load"](https://github.com/mcagan/scheduler/blob/master/docs/main-page.png?raw=true)
+!["Book interview form"](https://github.com/mcagan/scheduler/blob/master/docs/book-interview.png?raw=true)
+!["Cancel interview confirmation"](https://github.com/mcagan/scheduler/blob/master/docs/cancel-interview.png?raw=true)
