@@ -14,11 +14,9 @@ export function useVisualMode(initial) {
       setHistory((prevHistory) => [...prevHistory, newMode]);
     }
     setMode(newMode);
-    console.log("in transition", history);
   }
 
   function back() {
-    console.log("in back", history);
     if (history.length > 1) {
       history.pop();
       setMode(history[history.length - 1]);

@@ -85,6 +85,5 @@ export default function useApplicationDate() {
     bookInterview,
     cancelInterview,
     setDay,
-    // decreaseSpots,
   };
 }
