@@ -5,6 +5,7 @@ A responsive app built with React that lets users schedule interviews.
 ## Setup
 
 Install dependencies with `npm install`.
+Setup the following API according to the instructions in the README: https://github.com/mcagan/scheduler-api
 
 ## Command for Running Webpack Development Server
 
