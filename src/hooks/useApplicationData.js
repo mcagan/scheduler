@@ -32,7 +32,7 @@ export default function useApplicationData() {
     }
     const days = state.days;
     days[index].spots = spots;
-    return days;
+    return setState({ ...state, days });
   };
   const bookInterview = function (id, interview) {
     return axios
@@ -46,8 +46,8 @@ export default function useApplicationData() {
           ...state.appointments,
           [id]: appointment,
         };
-        const newDays = updateSpots(id);
-        setState({ ...state, appointments, days: newDays });
+        updateSpots(id, "add");
+        setState({ ...state, appointments });
       });
   };
 
@@ -79,8 +79,8 @@ export default function useApplicationData() {
           ...state.appointments,
           [id]: appointment,
         };
-        const newDays = updateSpots(id, "delete");
-        setState({ ...state, appointments, days: newDays });
+        updateSpots(id, "delete");
+        setState({ ...state, appointments });
       });
   };
 
