@@ -12,9 +12,7 @@ export default function Form(props) {
   };
   const cancel = function () {
     reset();
-    {
-      props.onCancel();
-    }
+    props.onCancel();
   };
   function validate() {
     if (name === "") {
