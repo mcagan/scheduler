@@ -6,13 +6,11 @@ import {
   cleanup,
   waitForElement,
   fireEvent,
-  prettyDOM,
   getByText,
   getAllByTestId,
   getByAltText,
   getByPlaceholderText,
   queryByText,
-  getByRole,
   getByTestId,
 } from "@testing-library/react";
 

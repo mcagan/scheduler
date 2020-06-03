@@ -25,6 +25,10 @@ npm run storybook
 - Axios
 - @testing-library/react-hooks
 - react-test-renderer
+- Storybook
+- Cypress
+- Sass
+- Jest
 
 ## Screenshots of App
 
